@@ -1,7 +1,9 @@
 import keyboard
 import time
 import keyboard
-print("running")
+
+
+
 class vacc_model:
     def __init__(self):
         self.reset()
@@ -23,7 +25,11 @@ class vacc_model:
             keyboard.press('2')
             time.sleep(0.015)
             keyboard.release('2')
-            time.sleep(0.75)
+            old_time = time.time()
+            while time.time() < old_time + 4:
+                time.sleep(0.02)
+                if keyboard.is_pressed('o') or keyboard.is_pressed('p'):
+                    return
         for i in range(iters):
             keyboard.press('b')
             time.sleep(0.03)
